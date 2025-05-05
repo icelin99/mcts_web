@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据分析仪表盘</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f5f7fa;
+            --panel-bg: #ffffff;
+            --accent-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --success-color: #4cc9f0;
+            --warning-color: #f72585;
+            --text-color: #2b2d42;
+            --text-light: #6c757d;
+            --border-color: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 2rem;
+            line-height: 1.5;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .dashboard-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        
+        .dashboard-controls {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .dashboard-control {
+            background-color: var(--panel-bg);
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-color);
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+        
+        .dashboard-control:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .dashboard-panels {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .dashboard-panel {
+            background-color: var(--panel-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .panel-header h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 0;
+        }
+        
+        .panel-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .panel-action {
+            background: none;
+            border: none;
+            padding: 0.25rem;
+            cursor: pointer;
+            border-radius: 4px;
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        
+        .panel-action:hover {
+            background-color: rgba(0,0,0,0.05);
+            color: var(--accent-color);
+        }
+        
+        .panel-body {
+            padding: 1.5rem;
+        }
+        
+        .chart-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        
+        .chart-card {
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .chart-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .chart-caption {
+            padding: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .panel-footer {
+            padding: 1rem 1.5rem;
+            background-color: rgba(0,0,0,0.02);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .insight-box {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .insight-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .insight-text {
+            font-size: 0.875rem;
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+        
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        
+        .icon {
+            display: inline-block;
+            font-style: normal;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .chart-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">数据分析仪表盘</h1>
+        <div class="dashboard-controls">
+            <button class="dashboard-control">导出报告</button>
+            <button class="dashboard-control">刷新数据</button>
+        </div>
+    </div>
+    
+    <div class="dashboard-panels">
+        
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h2>{&#x27;title&#x27;: &#x27;Analysis of Differences in Shopping Behavior by Gender&#x27;}</h2>
+                <div class="panel-actions">
+                    <button class="panel-action" title="刷新"><i class="icon">↻</i></button>
+                    <button class="panel-action" title="更多选项"><i class="icon">⋮</i></button>
+                </div>
+            </div>
+            <div class="panel-body">
+        <div class="chart-container">
+
+                <div class="chart-card">
+                    <img src="_manus/storyteller/output/iterations/iteration_1/charts/Comparison of purchase amount by gender.png" alt="">
+                    <div class="chart-caption"></div>
+                </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h2>{&#x27;title&#x27;: &#x27;Comparison of Purchase Preferences Across Different Age Groups&#x27;}</h2>
+                <div class="panel-actions">
+                    <button class="panel-action" title="刷新"><i class="icon">↻</i></button>
+                    <button class="panel-action" title="更多选项"><i class="icon">⋮</i></button>
+                </div>
+            </div>
+            <div class="panel-body">
+        <div class="chart-container">
+
+                <div class="chart-card">
+                    <img src="_manus/storyteller/output/iterations/iteration_1/charts/Comparison of product category preferences across different age groups.png" alt="This stacked bar chart breaks down product category preferences (Clothing, Accessories, Footwear, and Outerwear) by age groups. It reveals that Clothing is consistently the most popular category across all age ranges, with Accessories and Footwear showing steady but slightly varying levels of interest. Outerwear, however, exhibits a smaller share, particularly among younger age groups.">
+                    <div class="chart-caption">This stacked bar chart breaks down product category preferences (Clothing, Accessories, Footwear, and Outerwear) by age groups. It reveals that Clothing is consistently the most popular category across all age ranges, with Accessories and Footwear showing steady but slightly varying levels of interest. Outerwear, however, exhibits a smaller share, particularly among younger age groups.</div>
+                </div>
+                </div>
+
+            <div class="panel-footer">
+                <div class="insight-box">
+                    <div class="insight-icon">💡</div>
+                    <div class="insight-text">
+                        <strong>Chapter Summary：</strong> The chapter titled 'Comparison of Purchase Preferences Across Different Age Groups' aims to analyze and compare the product category preferences among customers of varying ages. The primary tool used for this analysis is a stacked bar chart that breaks down product category preferences by age groups. The chart reveals that Clothing is the most popular product category across all age groups, followed by Accessories and Footwear. Outerwear, on the other hand, is less popular, especially among younger customers. This pattern suggests that age plays a significant role in determining customers' product preferences. The analysis aligns with the user's query about understanding the differences between customers, particularly in terms of their purchasing behavior. It is recommended that further analysis could be conducted to understand the factors influencing these preferences, which could aid in tailoring marketing strategies for different age groups.
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h2>{&#x27;title&#x27;: &#x27;Differences in Shopping Patterns Based on Product Categories&#x27;}</h2>
+                <div class="panel-actions">
+                    <button class="panel-action" title="刷新"><i class="icon">↻</i></button>
+                    <button class="panel-action" title="更多选项"><i class="icon">⋮</i></button>
+                </div>
+            </div>
+            <div class="panel-body">
+        
+            </div>
+        </div>
+        
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <h2>{&#x27;title&#x27;: &#x27;Impact of Purchase Amount and Previous Purchases on Customer Differences&#x27;}</h2>
+                <div class="panel-actions">
+                    <button class="panel-action" title="刷新"><i class="icon">↻</i></button>
+                    <button class="panel-action" title="更多选项"><i class="icon">⋮</i></button>
+                </div>
+            </div>
+            <div class="panel-body">
+        <div class="chart-container">
+
+                <div class="chart-card">
+                    <img src="_manus/storyteller/output/iterations/iteration_1/charts/Analysis of correlation between purchase amount and previous purchases.png" alt="This scatter plot reveals the relationship between purchase amount (USD) and the number of previous purchases made by customers. While the data points are distributed across the range, it appears that no clear correlation exists between these two metrics, suggesting that customers with varying purchase histories spend similarly on individual transactions.">
+                    <div class="chart-caption">This scatter plot reveals the relationship between purchase amount (USD) and the number of previous purchases made by customers. While the data points are distributed across the range, it appears that no clear correlation exists between these two metrics, suggesting that customers with varying purchase histories spend similarly on individual transactions.</div>
+                </div>
+                </div>
+
+            <div class="panel-footer">
+                <div class="insight-box">
+                    <div class="insight-icon">💡</div>
+                    <div class="insight-text">
+                        <strong>Chapter Summary：</strong> The chapter titled 'Impact of Purchase Amount and Previous Purchases on Customer Differences' aims to explore the relationship between the amount a customer spends on a purchase and their history of previous purchases. The scatter plot chart in the chapter indicates that there is no clear correlation between the purchase amount in USD and the number of previous purchases made by customers. This suggests that regardless of how many purchases a customer has made in the past, they tend to spend a similar amount on individual transactions. This finding directly addresses the user's query about the differences between customers. It reveals that purchase history does not significantly influence the amount spent on subsequent purchases. This pattern could be indicative of consistent spending habits among customers, regardless of their purchase frequency. In conclusion, the analysis suggests that customer spending is not significantly impacted by the number of previous purchases. Further analysis could explore other factors that may influence customer spending habits.
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

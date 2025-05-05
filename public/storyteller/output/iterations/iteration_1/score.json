@@ -1,0 +1,14 @@
+{
+  "iteration": 1,
+  "score": 7.9,
+  "score_breakdown": {
+    "quality_reward": 7.9
+  },
+  "is_best": true,
+  "node_type": "FINALIZED",
+  "depth": 5,
+  "chapter_count": 4,
+  "chart_count": 3,
+  "timestamp": "2025-05-05 00:01:14",
+  "elapsed_time": "0:05:13.294172"
+}
